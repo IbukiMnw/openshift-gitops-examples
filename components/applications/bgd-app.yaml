@@ -1,35 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-metadata:
-  name: bgd-app 
-  namespace: openshift-gitops 
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/redhat-developer-demos/openshift-gitops-examples.git
-    targetRevision: main
-    path: apps/bgd/overlays/bgd
+metadata: 
+  name: bgd-app
+  namespace: openshift-gitops
+spec: 
   destination:
-    server: https://kubernetes.default.svc
     namespace: bgd
-    
-#apiVersion: argoproj.io/v1alpha1
-#kind: Application
-#metadata: 
-#  name: bgd-app
-#  namespace: openshift-gitops
-#spec: 
-#  destination:
-#    namespace: bgd
-#    server: https://kubernetes.default.svc
-#  project: default
-#  source: 
-#    path: apps/bgd/overlays/bgd
-#    repoURL: https://github.com/redhat-developer-demos/openshift-gitops-examples
-#    targetRevision: main
-#  syncPolicy:
-#   automated:
-#      prune: true
-#      selfHeal: false
-#    syncOptions:
-#    - CreateNamespace=true
+    server: https://kubernetes.default.svc
+  project: default
+  source: 
+    path: apps/bgd/overlays/bgd
+    repoURL: https://github.com/redhat-developer-demos/openshift-gitops-examples
+    targetRevision: main
+  syncPolicy:
+   automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
