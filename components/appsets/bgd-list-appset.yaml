@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-bgd
+  namespace: openshift-gitops
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+    applicationsSync: create-update
+  generators:
+    - list:
+        elements:
+          - app: bgd
+          - app: bgd2
+          - app: bgdk
+  goTemplate: true
+  goTemplateOptions:
+    - missingkey=error
+  template:
+    metadata:
+      name: '{test-{app}}'
+    spec:
+      destination:
+        server: 'https://kubernetes.default.svc'
+      project: btest
+      source:
+        path: 'apps/bgd/overlays/{{app}}' 
+        repoURL: 'https://github.com/IbukiMnw/openshift-gitops-examples'
+        targetRevision: main
+      syncPolicy:
+        automated: {}
