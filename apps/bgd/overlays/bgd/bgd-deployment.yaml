@@ -10,17 +10,17 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bgd
+      app: kokyaku
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: bgd
+        app: kokyaku
     spec:
       containers:
       - image: quay.io/rhdevelopers/bgd:1.0.0
-        name: bgd
+        name: kokyaku
         env:
         - name: COLOR
           value: "blue"
