@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source: 
-    path: overlays/develop/genkohoshu/b/kokyaku
+    path: apps/bgd/overlays/kokyaku
     repoURL: https://github.com/redhat-developer-demos/openshift-gitops-examples
     targetRevision: main
   syncPolicy:
