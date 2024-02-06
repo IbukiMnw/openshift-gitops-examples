@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata: 
-  name: i-kokyaku-B-heikokaihatsu-01
+  name: i-kokyaku-b-heikokaihatsu-01
   namespace: openshift-gitops
 spec: 
   destination:
