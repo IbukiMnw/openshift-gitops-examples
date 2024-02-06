@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - image: quay.io/rhdevelopers/bgd:1.0.0
-        name: kokyaku
+        name: bgd
         env:
         - name: COLOR
           value: "blue"
