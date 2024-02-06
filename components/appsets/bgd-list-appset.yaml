@@ -4,28 +4,19 @@ metadata:
   name: appset-bgd
   namespace: openshift-gitops
 spec:
-  syncPolicy:
-    preserveResourcesOnDeletion: true
-    applicationsSync: create-update
   generators:
     - list:
         elements:
           - app: bgd
           - app: bgd2
-          - app: bgdk
-  goTemplate: true
-  goTemplateOptions:
-    - missingkey=error
   template:
     metadata:
       name: '{test-{app}}'
     spec:
       destination:
-        server: 'https://kubernetes.default.svc'
+        server: https://kubernetes.default.svc
       project: btest
       source:
-        path: 'apps/bgd/overlays/{{app}}' 
-        repoURL: 'https://github.com/IbukiMnw/openshift-gitops-examples'
+        path: apps/bgd/overlays/bgd
+        repoURL: https://github.com/IbukiMnw/openshift-gitops-examples
         targetRevision: main
-      syncPolicy:
-        automated: {}
