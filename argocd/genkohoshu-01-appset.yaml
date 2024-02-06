@@ -28,4 +28,4 @@ spec:
         repoURL: 'https://github.com/IbukiMnw/openshift-gitops-examples'
         targetRevision: main
       syncPolicy:
-        automated: []
+        automated: {}
