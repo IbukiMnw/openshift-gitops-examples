@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-genkohoshu-01
+  namespace: openshift-gitops
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+    applicationsSync: create-update
+  generators:
+    - git:
+        directories:
+          - path: overlays/develop/genkohoshu-01/*/*/
+        repoURL: 'https://github.com/redhat-developer-demos/openshift-gitops-examples'
+        revision: main
+  goTemplate: true
+  goTemplateOptions:
+    - missingkey=error
+  template:
+    metadata:
+      name: '{{.path.basenameNormalized}-{index .path.segments 3}{index .path.segments 2}}'
+    spec:
+      destination:
+        server: 'https://kubernetes.default.svc'
+      project: b
+      source:
+        path: '{{.path.path}}' #The directory paths within the Git repository that match the path wildcard.
+        repoURL: 'https://github.com/IbukiMnw/openshift-gitops-examples'
+        targetRevision: main
+      syncPolicy:
+        automated: []
