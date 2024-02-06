@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   labels:
     app: bgd
-  name: bgd
+  name: kokyaku
   namespace: bgd
 spec:
   replicas: 1
