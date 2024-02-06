@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: appset-genkohoshu-01
+  name: appset-bgd
   namespace: openshift-gitops
 spec:
   syncPolicy:
@@ -10,7 +10,7 @@ spec:
   generators:
     - git:
         directories:
-          - path: overlays/develop/genkohoshu-01/*/*/
+          - path: apps/bgd/overlays/*/
         repoURL: 'https://github.com/redhat-developer-demos/openshift-gitops-examples'
         revision: main
   goTemplate: true
@@ -18,11 +18,11 @@ spec:
     - missingkey=error
   template:
     metadata:
-      name: '{{.path.basenameNormalized}-{index .path.segments 3}{index .path.segments 2}}'
+      name: '{test-{.path.basenameNormalized}}'
     spec:
       destination:
         server: 'https://kubernetes.default.svc'
-      project: b
+      project: btest
       source:
         path: '{{.path.path}}' 
         repoURL: 'https://github.com/IbukiMnw/openshift-gitops-examples'
