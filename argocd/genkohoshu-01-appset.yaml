@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: appset-bgd
+  name: genkohoshu-01
   namespace: openshift-gitops
 spec:
   syncPolicy:
@@ -17,7 +17,7 @@ spec:
         revision: HEAD
   template:
     metadata:
-      name: 'update-{{.path.basenameNormalized}}-{{index .path.segments 3}}-{{index .path.segments 2}}'
+      name: '{{.path.basenameNormalized}}-{{index .path.segments 3}}-{{index .path.segments 2}}'
     spec:
       destination:
         server: https://kubernetes.default.svc
