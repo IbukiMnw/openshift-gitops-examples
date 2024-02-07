@@ -25,3 +25,5 @@ spec:
         path: '{{.path.path}}'
         repoURL: https://github.com/IbukiMnw/openshift-gitops-examples
         targetRevision: HEAD
+      syncPolicy:
+        automated: []
