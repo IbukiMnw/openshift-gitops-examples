@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-genkohoshu-01-d
+  namespace: openshift-gitops
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+    applicationsSync: create-update
+  generators:
+    - list:
+        elements:
+          - app: bgd
+            subsystem: d
+          - app: bgd2
+            subsystem: d
+  goTemplate: true
+  goTemplateOptions:
+    - missingkey=error
+  template:
+    metadata:
+      name: '{{subsystem}}-{{app}}'
+    spec:
+      destination:
+        server: 'https://kubernetes.default.svc'
+      project: b
+      source:
+        path: overlays/develop/genkohoshu-1/{{subsystem}}/{{app}}
+        repoURL: 'https://github.com/IbukiMnw/openshift-gitops-examples'
+        targetRevision: main
+      syncPolicy:
+        automated: {}
