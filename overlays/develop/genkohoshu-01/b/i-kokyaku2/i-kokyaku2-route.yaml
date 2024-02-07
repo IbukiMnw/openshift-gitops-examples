@@ -2,13 +2,13 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    app: i-kokyaku2
-  name: i-kokyaku2
-  namespace: bgd
+    app: bgd
+  name: bgd
+  namespace: i-kokyaku2
 spec:
   port:
     targetPort: 8080
   to:
     kind: Service
-    name: i-kokyaku2
+    name: bgd
     weight: 100

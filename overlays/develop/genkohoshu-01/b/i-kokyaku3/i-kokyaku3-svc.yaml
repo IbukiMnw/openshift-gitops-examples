@@ -3,14 +3,14 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: i-kokyaku3
-  name: i-kokyaku3
-  namespace: bgd
+    app: bgd
+  name: bgd
+  namespace: i-kokyaku3
 spec:
   ports:
   - port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
-    app: i-kokyaku3
+    app: bgd
 ---

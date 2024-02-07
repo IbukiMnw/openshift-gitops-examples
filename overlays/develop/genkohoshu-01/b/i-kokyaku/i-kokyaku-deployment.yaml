@@ -3,24 +3,24 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: i-kokyaku
-  name: i-kokyaku
-  namespace: bgd
+    app: bgd
+  name: bgd
+  namespace: i-kokyaku
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: i-kokyaku
+      app: bgd
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: i-kokyaku
+        app: bgd
     spec:
       containers:
       - image: quay.io/rhdevelopers/bgd:1.0.0
-        name: i-kokyaku
+        name: bgd
         env:
         - name: COLOR
           value: "blue"
