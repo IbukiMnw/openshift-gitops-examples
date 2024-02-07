@@ -5,7 +5,7 @@ metadata:
   labels:
     app: bgd
   name: bgd
-  namespace: i-kokyaku3
+  namespace: web1
 spec:
   replicas: 1
   selector:
@@ -23,6 +23,6 @@ spec:
         name: bgd
         env:
         - name: COLOR
-          value: "green"
+          value: "red"
         resources: {}
 ---
