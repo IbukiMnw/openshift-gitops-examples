@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: appset-genkohoshu-01
+  name: appset-genkohoshu-01-d
   namespace: openshift-gitops
 spec:
   syncPolicy:
@@ -10,7 +10,7 @@ spec:
   generators:
     - git:
         directories:
-          - path: overlays/develop/genkohoshu-01/b/*/
+          - path: overlays/develop/genkohoshu-01/d/*
         repoURL: 'https://github.com/IbukiMnw/openshift-gitops-examples'
         revision: main
   goTemplate: true
