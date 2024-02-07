@@ -13,8 +13,6 @@ spec:
     - git:
         directories:
           - path: overlays/develop/genkohoshu-01/*/*
-#          - exclude: true
-#            path: overlays/develop/genkohoshu-01/c/*
         repoURL: https://github.com/IbukiMnw/openshift-gitops-examples
         revision: HEAD
   template:
