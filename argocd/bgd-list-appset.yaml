@@ -11,12 +11,12 @@ spec:
           - app: bgd2
   template:
     metadata:
-      name: '{test-{app}}'
+      name: 'd-{{app}}'
     spec:
       destination:
         server: https://kubernetes.default.svc
-      project: btest
+      project: default
       source:
-        path: apps/bgd/overlays/bgd
+        path: overlays/develop/genkohoshu-01/d/{{app}}
         repoURL: https://github.com/IbukiMnw/openshift-gitops-examples
-        targetRevision: main
+        targetRevision: HEAD
