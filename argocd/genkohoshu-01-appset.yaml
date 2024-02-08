@@ -17,14 +17,23 @@ spec:
         revision: HEAD
   template:
     metadata:
-      name: '{{.path.basenameNormalized}}-{{index .path.segments 3}}-{{index .path.segments 2}}'
+      name: '{{.path.basenameNormalized}}-{{index .path.segments 2}}'
+      labels:
+        dest.space: '{{index .path.segments 2}}'
+        app.continername: '{{.path.basenameNormalized}}'
+        app.subsystem: '{{index .path.segments 3}}'
     spec:
       destination:
         server: https://kubernetes.default.svc
-      project: default
+      project: '{{index .path.segments 3}}'
       source:
         path: '{{.path.path}}'
         repoURL: https://github.com/IbukiMnw/openshift-gitops-examples
         targetRevision: HEAD
       syncPolicy:
-        automated: {}
+        automated: 
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - PruneLast=true
+          - ApplyOutOfSyncOnly=true
