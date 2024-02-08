@@ -4,7 +4,7 @@ metadata:
   labels:
     app: bgd
   name: bgd
-  namespace: kokyaku
+  namespace: i-kokyaku1
 spec:
   port:
     targetPort: 8080
