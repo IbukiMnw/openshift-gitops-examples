@@ -17,11 +17,11 @@ spec:
         revision: HEAD
   template:
     metadata:
-      name: 'update-{{.path.basenameNormalized}}-{{index .path.segments 3}}-{{index .path.segments 2}}'
+      name: '{{.path.basenameNormalized}}-{{index .path.segments 3}}-{{index .path.segments 2}}'
     spec:
       destination:
         server: https://kubernetes.default.svc
-      project: '{{index .path.segments 3}}'
+      project: default
       source:
         path: '{{.path.path}}'
         repoURL: https://github.com/IbukiMnw/openshift-gitops-examples
